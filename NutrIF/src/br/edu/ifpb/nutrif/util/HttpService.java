@@ -6,7 +6,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
+
+import org.json.JSONObject;
 
 import android.util.Log;
 
@@ -39,8 +42,40 @@ public class HttpService {
         return connection;
     }
 
-    public void sendJsonPostRequest() {
+    public static Response sendJsonPostRequest(JSONObject jsonObject, String service) {
+    	
+    	 HttpURLConnection connection = null;
+    	 Response response=null;
+    	    	
+    	try {
+    		 URL url = new URL(URL_CONTEXT + service);
+    		 
+	    	connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoOutput(true);
+	        connection.setDoInput(true);
+	        connection.setRequestProperty("Content-Type", "application/json");
 
+	        connection.connect();
+	        
+			connection.setRequestMethod("POST");
+			
+			int httpCode = connection.getResponseCode();
+			String content = getHttpContent(connection);
+
+			connection.disconnect();
+
+			response = new Response(httpCode, content);
+
+		} catch (ProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+
+        return response;
     }
 
     public static String getHttpContent(HttpURLConnection connection) {

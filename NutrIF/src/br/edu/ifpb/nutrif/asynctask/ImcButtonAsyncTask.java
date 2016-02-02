@@ -1,6 +1,7 @@
 package br.edu.ifpb.nutrif.asynctask;
 
 import br.edu.ifpb.nutrif.util.*;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -36,17 +37,19 @@ public class ImcButtonAsyncTask extends AsyncTask<String, Void, Response>{
 		int statusCodeHttp = 0;
 		String contentValue = null;
 		
-		try {
-			connection = HttpService.sendPostRequest("calcularIMC", "POST");
-	        contentValue = HttpService.getHttpContent(connection);
-	        statusCodeHttp = connection.getResponseCode();
-		} catch (MalformedURLException e1) {
+		JSONObject json = new JSONObject();
+        try {
+        	json.put("peso", Float.parseFloat(params[0]));
+        	json.put("altura", Float.parseFloat(params[1]));
+		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
+			e.printStackTrace();
+		} catch (JSONException e) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			e.printStackTrace();
 		}
+        
+		response = HttpService.sendJsonPostRequest(json, "calcularIMC");
 
         response = new Response(statusCodeHttp, contentValue);
         
@@ -61,8 +64,8 @@ public class ImcButtonAsyncTask extends AsyncTask<String, Void, Response>{
 				
 		try {
             JSONObject json = new JSONObject(response.getContentValue());
-            String imc = json.getString("valor");
-            Toast.makeText(context, imc, Toast.LENGTH_LONG).show();           
+            double imc = json.getDouble("valor");
+            Toast.makeText(context, "O IMC é: "+imc, Toast.LENGTH_LONG).show();           
             
         } catch (JSONException e) {
             Log.e("LoginAsyncTask", "JSONException: " + e.getMessage());

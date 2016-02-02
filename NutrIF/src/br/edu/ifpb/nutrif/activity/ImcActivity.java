@@ -30,21 +30,11 @@ public class ImcActivity extends Activity {
 	            EditText alturaEditText = (EditText) findViewById(R.id.alturaEditText);
 	            String altura = alturaEditText.getText().toString();
 
-	            JSONObject json = new JSONObject();
-	            try {
-	            	json.put("peso", Float.parseFloat(peso));
-	            	json.put("altura", Float.parseFloat(altura));
-				} catch (NumberFormatException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+	            String [] valores = {peso, altura};
 	     	            
 	            ImcButtonAsyncTask imcAsyncTask = new ImcButtonAsyncTask(v.getContext());
 	            
-	            imcAsyncTask.execute(json.toString());
+	            imcAsyncTask.execute(valores);
 	            
 	        }
 	    });
