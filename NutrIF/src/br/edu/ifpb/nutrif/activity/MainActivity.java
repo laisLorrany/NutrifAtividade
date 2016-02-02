@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 import br.edu.ifpb.nutrif.R;
 import br.edu.ifpb.nutrif.asynctask.ServerButtonAsyncTask;
 
@@ -25,6 +26,7 @@ public class MainActivity extends Activity {
 	
 	            ServerButtonAsyncTask serverButtonAsyncTask = 
 	            		new ServerButtonAsyncTask(v.getContext());
+	            
 	
 	            serverButtonAsyncTask.execute();
 	            
