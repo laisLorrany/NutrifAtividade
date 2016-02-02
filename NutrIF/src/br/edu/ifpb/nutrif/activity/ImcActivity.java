@@ -1,5 +1,8 @@
 package br.edu.ifpb.nutrif.activity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,18 +23,29 @@ public class ImcActivity extends Activity {
 		asyncTaskButton.setOnClickListener(new View.OnClickListener() {
 	        @Override
 	        public void onClick(View v) {
-	            Log.i("MainActivity", "Clique no botão da AsyncTask");
+	            Log.i("ImcActivity", "Clique no botão da AsyncTask");
 
 	            EditText pesoEditText = (EditText) findViewById(R.id.pesoEditText);
 	            String peso = pesoEditText.getText().toString();
 	            EditText alturaEditText = (EditText) findViewById(R.id.alturaEditText);
 	            String altura = alturaEditText.getText().toString();
 
-	            String [] valores = {peso, altura};
-	     	            
+	            JSONObject jsonImc = new JSONObject();
+	            try {
+	            	
+					jsonImc.put("peso", Float.parseFloat(peso));
+		            jsonImc.put("altura", Float.parseFloat(altura));
+		            
+				} catch (NumberFormatException e) {
+					e.printStackTrace();
+					
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+	            	     	            
 	            ImcButtonAsyncTask imcAsyncTask = new ImcButtonAsyncTask(v.getContext());
 	            
-	            imcAsyncTask.execute(valores);
+	            imcAsyncTask.execute(jsonImc);
 	            
 	        }
 	    });

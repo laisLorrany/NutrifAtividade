@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
 	        }
 		});
 		
-		Button imcActivity = (Button) findViewById(R.id.ImcButton);
+		Button imcActivity = (Button) findViewById(R.id.imcButton);
 		imcActivity.setOnClickListener(new View.OnClickListener() {
 			
 			@Override

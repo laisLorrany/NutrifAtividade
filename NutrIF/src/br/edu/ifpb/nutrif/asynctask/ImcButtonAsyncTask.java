@@ -1,6 +1,8 @@
 package br.edu.ifpb.nutrif.asynctask;
 
+import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,7 +14,7 @@ import android.widget.Toast;
 import br.edu.ifpb.nutrif.util.HttpService;
 import br.edu.ifpb.nutrif.util.Response;
 
-public class ImcButtonAsyncTask extends AsyncTask<String, Void, Response>{
+public class ImcButtonAsyncTask extends AsyncTask<JSONObject, Void, Response>{
 
 	Context context;
 	
@@ -28,28 +30,23 @@ public class ImcButtonAsyncTask extends AsyncTask<String, Void, Response>{
 	}
 
 	@Override
-	protected Response doInBackground(String... params) {
+	protected Response doInBackground(JSONObject... params) {
 
-		HttpURLConnection connection = null;
-		Response response;
-		int statusCodeHttp = 0;
-		String contentValue = null;
+		Response response = null;
 		
-		JSONObject json = new JSONObject();
         try {
-        	json.put("peso", Float.parseFloat(params[0]));
-        	json.put("altura", Float.parseFloat(params[1]));
+        	response = HttpService.sendJSONPostResquest("calcularIMC", params[0]);
+
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+			
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
         
-		//response = HttpService.sendJsonPostRequest(json, "calcularIMC");
-
-        response = new Response(statusCodeHttp, contentValue);
         
 		Log.i("LoginAsyncTask: ", "doInBackGround");
 		
