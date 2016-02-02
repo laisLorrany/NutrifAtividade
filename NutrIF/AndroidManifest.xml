@@ -26,6 +26,11 @@
             android:name="br.edu.ifpb.nutrif.activity.ImcActivity"
             android:label="@string/title_activity_imc" >
         </activity>
+        
+        <activity
+            android:name="br.edu.ifpb.nutrif.activity.CalculaVCTActivity"
+            android:label="@string/title_calculavctactivity" >
+        </activity>
     </application>
 
 </manifest>

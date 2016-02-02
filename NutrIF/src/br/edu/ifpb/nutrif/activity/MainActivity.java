@@ -42,8 +42,19 @@ public class MainActivity extends Activity {
 		        startActivity(intent);
 			}
 		});
+
+	
+	Button vctButton = (Button) findViewById(R.id.vctButton);
+	vctButton.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+
+			Intent intent = new Intent(MainActivity.this,CalculaVCTActivity.class);
+	        startActivity(intent);
+		}
+	});
 	}
-	
-	
+
 	
 }

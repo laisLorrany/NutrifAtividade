@@ -16,7 +16,7 @@ public class CalculaVCTActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_valorcal);
 		
-		Button asyncTaskButton = (Button)findViewById(R.id.calculaImcButton);
+		Button asyncTaskButton = (Button)findViewById(R.id.calculaVctButton);
 		asyncTaskButton.setOnClickListener(new View.OnClickListener() {
 	        @Override
 	        public void onClick(View v) {
