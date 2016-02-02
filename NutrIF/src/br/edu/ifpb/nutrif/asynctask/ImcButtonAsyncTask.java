@@ -47,7 +47,7 @@ public class ImcButtonAsyncTask extends AsyncTask<String, Void, Response>{
 			e.printStackTrace();
 		}
         
-		response = HttpService.sendJsonPostRequest(json, "calcularIMC");
+		//response = HttpService.sendJsonPostRequest(json, "calcularIMC");
 
         response = new Response(statusCodeHttp, contentValue);
         

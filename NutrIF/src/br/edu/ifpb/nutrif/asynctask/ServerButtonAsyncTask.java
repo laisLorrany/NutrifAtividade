@@ -38,7 +38,7 @@ public class ServerButtonAsyncTask extends AsyncTask<String, Void, Response>{
 		String contentValue = null;
 		
 		try {
-			connection = HttpService.sendPostRequest("statusServer", "GET");
+			connection = HttpService.sendGetRequest("statusServer");
 	        contentValue = HttpService.getHttpContent(connection);
 	        statusCodeHttp = connection.getResponseCode();
 		} catch (MalformedURLException e1) {
