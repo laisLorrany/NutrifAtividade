@@ -41,6 +41,9 @@ public class CalButtonAsyncTask extends AsyncTask<String, Void, Response>{
         try {
         	json.put("peso", Float.parseFloat(params[0]));
         	json.put("altura", Float.parseFloat(params[1]));
+        	json.put("esporte", Float.parseFloat(params[2]));
+        	json.put("sexo", Float.parseFloat(params[3]));
+        	json.put("nascimento", Float.parseFloat(params[4]));
         	
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
@@ -65,8 +68,20 @@ public class CalButtonAsyncTask extends AsyncTask<String, Void, Response>{
 				
 		try {
             JSONObject json = new JSONObject(response.getContentValue());
-            double imc = json.getDouble("valor");
-            Toast.makeText(context, "O IMC é: "+imc, Toast.LENGTH_LONG).show();           
+            double vct = json.getDouble("valor");
+            JSONObject anamnese = json.getDouble("anamnese");
+            double peso = anamnese.getDouble("peso");
+            double altura = anamnese.getDouble("altura");
+            double esporte = anamnese.getDouble("esporte");
+            JSONObject entrevistado = anamnese.getString("entrevistado");
+            String nascimento = entrevistado.getString("nascimento");
+            String sexo = entrevistado.getString("sexo");
+            Toast.makeText(context, "O valor calórico total é: "+vct, Toast.LENGTH_LONG).show();  
+            Toast.makeText(context, "O peso é: "+peso, Toast.LENGTH_LONG).show();         
+            Toast.makeText(context, "A altura é: "+altura, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "O nível de esporte é: "+esporte, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "A data de nascimento é: "+nascimento, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "O sexo é: "+sexo, Toast.LENGTH_LONG).show();
             
         } catch (JSONException e) {
             Log.e("LoginAsyncTask", "JSONException: " + e.getMessage());
