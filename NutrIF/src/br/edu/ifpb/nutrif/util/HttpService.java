@@ -98,7 +98,7 @@ public class HttpService {
 
         } catch (IOException e) {
 
-            Log.e("NotificationWearApp", "IOException: " + e);
+            Log.e("NotificationApp", "IOException: " + e);
         }
 
         return builder.toString();

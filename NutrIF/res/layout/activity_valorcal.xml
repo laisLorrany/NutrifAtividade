@@ -84,13 +84,6 @@
         android:text="Nivel de esportes"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Spinner
-        android:id="@+id/niveis"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/alturaEditText"
-        android:layout_below="@+id/textView1" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -116,7 +109,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText1"
+        android:layout_below="@+id/niveis"
         android:layout_toRightOf="@+id/textView1"
         android:text="Sexo"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -125,9 +118,16 @@
         android:id="@+id/sexo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editText1"
-        android:layout_alignBottom="@+id/editText1"
+        android:layout_alignBaseline="@+id/nasc"
+        android:layout_alignBottom="@+id/nasc"
         android:layout_toRightOf="@+id/pesoTextView"
         android:ems="10" />
+
+    <Spinner
+        android:id="@+id/niveis"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/linearLayout1" />
 
 </RelativeLayout>

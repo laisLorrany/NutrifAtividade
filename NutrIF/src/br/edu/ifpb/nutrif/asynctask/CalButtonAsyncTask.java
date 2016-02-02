@@ -37,11 +37,11 @@ public class CalButtonAsyncTask extends AsyncTask<String, Void, Response>{
 		
 		JSONObject json = new JSONObject();
         try {
+        	String entrevistado = "{nascimento : " + params[4] +", sexo : "+ params[3] +"}";
         	json.put("peso", Float.parseFloat(params[0]));
         	json.put("altura", Float.parseFloat(params[1]));
         	json.put("esporte", Float.parseFloat(params[2]));
-        	json.put("sexo", Float.parseFloat(params[3]));
-        	json.put("nascimento", Float.parseFloat(params[4]));
+        	json.put("entrevistado", entrevistado);
         	
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
