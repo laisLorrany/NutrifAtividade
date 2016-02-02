@@ -1,22 +1,25 @@
 package br.edu.ifpb.nutrif.asynctask;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
+import br.edu.ifpb.nutrif.dialog.DialogBox;
 import br.edu.ifpb.nutrif.util.HttpService;
 import br.edu.ifpb.nutrif.util.Response;
 
 public class ImcButtonAsyncTask extends AsyncTask<JSONObject, Void, Response>{
 
 	Context context;
+	 private AlertDialog alerta;
+
 	
 	public ImcButtonAsyncTask(Context context) {
 		// TODO Auto-generated constructor stub
@@ -56,13 +59,15 @@ public class ImcButtonAsyncTask extends AsyncTask<JSONObject, Void, Response>{
 	@Override
 	protected void onPostExecute(Response response){
 		Log.i("LoginAsyncTask: ", "onPostExecute");
-				
+		
 		try {
             JSONObject json = new JSONObject(response.getContentValue());
             double imc = json.getDouble("valor");
-            Toast.makeText(context, "O IMC é: "+imc, Toast.LENGTH_LONG).show();           
-            
-        } catch (JSONException e) {
+            DialogBox dialog = new DialogBox("Índice de Massa Corpórea (IMC)", 
+            		"O IMC é: " + imc, context);
+            dialog.dialogExecute();
+
+       } catch (JSONException e) {
             Log.e("LoginAsyncTask", "JSONException: " + e.getMessage());
         }
 	}

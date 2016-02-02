@@ -20,7 +20,7 @@ public class CalculaVCTActivity extends Activity {
 		asyncTaskButton.setOnClickListener(new View.OnClickListener() {
 	        @Override
 	        public void onClick(View v) {
-	            Log.i("MainActivity", "Clique no botão da AsyncTask");
+	            Log.i("CalculaVCTActivity", "Clique no botão da AsyncTask");
 
 	            EditText pesoEditText = (EditText) findViewById(R.id.pesoEditText);
 	            String peso = pesoEditText.getText().toString();
