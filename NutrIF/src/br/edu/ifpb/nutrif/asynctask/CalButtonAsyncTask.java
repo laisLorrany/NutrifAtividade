@@ -1,6 +1,8 @@
 package br.edu.ifpb.nutrif.asynctask;
 
+import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -8,11 +10,13 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
+import br.edu.ifpb.nutrif.entidades.Anamnese;
 import br.edu.ifpb.nutrif.util.HttpService;
 import br.edu.ifpb.nutrif.util.Response;
 
-public class CalButtonAsyncTask extends AsyncTask<String, Void, Response>{
+import com.google.gson.Gson;
+
+public class CalButtonAsyncTask extends AsyncTask<JSONObject, Void, Response>{
 
 	Context context;
 	
@@ -28,30 +32,23 @@ public class CalButtonAsyncTask extends AsyncTask<String, Void, Response>{
 	}
 
 	@Override
-	protected Response doInBackground(String... params) {
+	protected Response doInBackground(JSONObject... params) {
 
 		HttpURLConnection connection = null;
 		Response response;
 		int statusCodeHttp = 0;
 		String contentValue = null;
 		
-		JSONObject json = new JSONObject();
-        try {
-        	String entrevistado = "{nascimento : " + params[4] +", sexo : "+ params[3] +"}";
-        	json.put("peso", Float.parseFloat(params[0]));
-        	json.put("altura", Float.parseFloat(params[1]));
-        	json.put("esporte", Float.parseFloat(params[2]));
-        	json.put("entrevistado", entrevistado);
-        	
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
+    	try {
+			response = HttpService.sendJSONPostResquest("calcularVCT", params[0]);
+			
+		} catch (MalformedURLException e) {
 			e.printStackTrace();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-        
-		//response = HttpService.sendJsonPostRequest(json, "calcularIMC");
+
 
         response = new Response(statusCodeHttp, contentValue);
         
@@ -63,23 +60,17 @@ public class CalButtonAsyncTask extends AsyncTask<String, Void, Response>{
 	@Override
 	protected void onPostExecute(Response response){
 		Log.i("LoginAsyncTask: ", "onPostExecute");
+		Gson gson = new Gson();
 				
 		try {
-            JSONObject json = new JSONObject(response.getContentValue());
-            double vct = json.getDouble("valor");
-            JSONObject anamnese = json.getJSONObject("anamnese");
-            double peso = anamnese.getDouble("peso");
-            double altura = anamnese.getDouble("altura");
-            double esporte = anamnese.getDouble("esporte");
-            JSONObject entrevistado = anamnese.getJSONObject("entrevistado");
-            String nascimento = entrevistado.getString("nascimento");
-            String sexo = entrevistado.getString("sexo");
-            Toast.makeText(context, "O valor calórico total é: "+vct, Toast.LENGTH_LONG).show();  
-            Toast.makeText(context, "O peso é: "+peso, Toast.LENGTH_LONG).show();         
-            Toast.makeText(context, "A altura é: "+altura, Toast.LENGTH_LONG).show();
-            Toast.makeText(context, "O nível de esporte é: "+esporte, Toast.LENGTH_LONG).show();
-            Toast.makeText(context, "A data de nascimento é: "+nascimento, Toast.LENGTH_LONG).show();
-            Toast.makeText(context, "O sexo é: "+sexo, Toast.LENGTH_LONG).show();
+            JSONObject jsonResponse = new JSONObject(response.getContentValue());
+            String jsonAnamnese = jsonResponse.getString("anamnese");
+            
+            double vct = jsonResponse.getDouble("valor");
+            Anamnese anamnese = gson.fromJson(jsonAnamnese, Anamnese.class);
+            
+            String titulo = "Valor Calórico Total (VCT)";
+            String mensagem = "O VCT é: " + vct +". Anamnese: " + anamnese.toString();
             
         } catch (JSONException e) {
             Log.e("LoginAsyncTask", "JSONException: " + e.getMessage());

@@ -1,5 +1,8 @@
 package br.edu.ifpb.nutrif.activity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,7 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import br.edu.ifpb.nutrif.R;
-import br.edu.ifpb.nutrif.asynctask.*;
+import br.edu.ifpb.nutrif.asynctask.CalButtonAsyncTask;
+import br.edu.ifpb.nutrif.entidades.Entrevistado;
+
+import com.google.gson.Gson;
 
 public class CalculaVCTActivity extends Activity {
 
@@ -26,19 +32,36 @@ public class CalculaVCTActivity extends Activity {
 	            String peso = pesoEditText.getText().toString();
 	            EditText alturaEditText = (EditText) findViewById(R.id.alturaEditText);
 	            String altura = alturaEditText.getText().toString();
-	            EditText esporteEditText = (EditText) findViewById(R.id.niveis);
-	            String esporte = esporteEditText.getText().toString();
+	            //EditText esporteEditText = (EditText) findViewById(R.id.niveis);
+	            //String esporte = esporteEditText.getText().toString();
 	            EditText sexoEditText = (EditText) findViewById(R.id.sexo);
 	            String sexo = sexoEditText.getText().toString();
 	            EditText nascimentoEditText = (EditText) findViewById(R.id.nasc);
 	            String nascimento = nascimentoEditText.getText().toString();
 	            
-
-	            String [] valores = {peso, altura, esporte, sexo, nascimento};
+	            Entrevistado entrevistado = new Entrevistado(nascimento, sexo);
+	            
+	            Gson gson = new Gson();
+	            String jsonEntrevistado = gson.toJson(entrevistado);
+	            
+				JSONObject jsonVct = new JSONObject();
+				
+				try {
+					jsonVct.put("peso", Float.parseFloat(peso));
+					jsonVct.put("altura", Float.parseFloat(altura));
+					jsonVct.put("nivelEsporte", 1/*Integer.parseInt(esporte)*/);
+					jsonVct.put("entrevistado", jsonEntrevistado);
+					
+				} catch (NumberFormatException e) {
+					e.printStackTrace();
+					
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
 	     	            
 	            CalButtonAsyncTask calButtonAsynctask = new CalButtonAsyncTask(v.getContext());
 	            
-	            calButtonAsynctask.execute(valores);
+	            calButtonAsynctask.execute(jsonVct);
 	            
 	        }
 	    });
