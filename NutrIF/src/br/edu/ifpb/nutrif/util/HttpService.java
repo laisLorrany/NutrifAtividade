@@ -16,7 +16,7 @@ import android.util.Log;
 public class HttpService {
 
     // IP da máquina onde se encontra o servidor.
-    private static final String URL_CONTEXT = "http://ladoss.com.br:8443/nutrif/NutrIF_service/";
+    private static final String URL_CONTEXT = "http://192.168.1.245:8443/nutrif/NutrIF_service/";
 
     public static HttpURLConnection sendPostRequest(String service, String method)
             throws MalformedURLException, IOException{
