@@ -69,11 +69,11 @@ public class CalButtonAsyncTask extends AsyncTask<String, Void, Response>{
 		try {
             JSONObject json = new JSONObject(response.getContentValue());
             double vct = json.getDouble("valor");
-            JSONObject anamnese = json.getDouble("anamnese");
+            JSONObject anamnese = json.getJSONObject("anamnese");
             double peso = anamnese.getDouble("peso");
             double altura = anamnese.getDouble("altura");
             double esporte = anamnese.getDouble("esporte");
-            JSONObject entrevistado = anamnese.getString("entrevistado");
+            JSONObject entrevistado = anamnese.getJSONObject("entrevistado");
             String nascimento = entrevistado.getString("nascimento");
             String sexo = entrevistado.getString("sexo");
             Toast.makeText(context, "O valor calórico total é: "+vct, Toast.LENGTH_LONG).show();  

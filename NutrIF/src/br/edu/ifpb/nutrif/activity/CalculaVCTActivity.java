@@ -19,7 +19,7 @@ public class CalculaVCTActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_valorcal);
 		
-		Button asyncTaskButton = (Button)findViewById(R.id.calculaVCTButton);
+		Button asyncTaskButton = (Button)findViewById(R.id.calculaImcButton);
 		asyncTaskButton.setOnClickListener(new View.OnClickListener() {
 	        @Override
 	        public void onClick(View v) {
@@ -29,11 +29,11 @@ public class CalculaVCTActivity extends Activity {
 	            String peso = pesoEditText.getText().toString();
 	            EditText alturaEditText = (EditText) findViewById(R.id.alturaEditText);
 	            String altura = alturaEditText.getText().toString();
-	            EditText esporteEditText = (EditText) findViewById(R.id.esporteEditText);
+	            EditText esporteEditText = (EditText) findViewById(R.id.niveis);
 	            String esporte = esporteEditText.getText().toString();
-	            EditText sexoEditText = (EditText) findViewById(R.id.sexoEditText);
+	            EditText sexoEditText = (EditText) findViewById(R.id.sexo);
 	            String sexo = sexoEditText.getText().toString();
-	            EditText nascimentoEditText = (EditText) findViewById(R.id.nascimentoEditText);
+	            EditText nascimentoEditText = (EditText) findViewById(R.id.nasc);
 	            String nascimento = nascimentoEditText.getText().toString();
 	            
 
