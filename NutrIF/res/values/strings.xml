@@ -11,6 +11,7 @@
     <string name="altura">Digite a sua altura</string>
     <string name="imc">Calcular</string>
     <string name="action_settings">Settings</string>
+    <string name="telaCal">Calcular valor calórico</string>
     
     <style name="DefaultButtonText">
        <item name="android:layout_width">fill_parent</item>
@@ -25,5 +26,11 @@
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1</item>
     </style>
+    
+    <string-array name="niveis">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
 
 </resources>
