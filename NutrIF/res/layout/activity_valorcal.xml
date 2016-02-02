@@ -44,49 +44,6 @@
         android:text="@string/altura"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/radioButton1"
-        android:layout_alignBottom="@+id/radioButton1"
-        android:layout_alignLeft="@+id/pesoTextView"
-        android:text="2" />
-
-    <RadioButton
-        android:id="@+id/radioButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView2"
-        android:layout_alignRight="@+id/pesoTextView"
-        android:text="F" />
-
-    <RadioButton
-        android:id="@+id/radioButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView2"
-        android:layout_toRightOf="@+id/radioButton4"
-        android:text="M" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView3"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_alignLeft="@+id/radioButton1"
-        android:text="Nivel de esportes"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <RadioButton
-        android:id="@+id/radioButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/linearLayout1"
-        android:layout_toLeftOf="@+id/alturaTextView"
-        android:text="1" />
-
     <TextView
         android:id="@+id/nasc"
         android:layout_width="wrap_content"
@@ -151,18 +108,60 @@
         android:orientation="vertical"
         android:padding="10dp" >
     </LinearLayout>
-
-    <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView2"
-        android:layout_alignRight="@+id/linearLayout1"
-        android:text="3" />
     
     <RadioGroup
         android:id="@+id/rgopcoes"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>
+
+    <RadioButton
+        android:id="@+id/radioButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/nasc"
+        android:layout_alignRight="@+id/pesoTextView"
+        android:text="F" />
+
+    <RadioButton
+        android:id="@+id/radioButton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/nasc"
+        android:layout_toRightOf="@+id/alturaTextView"
+        android:text="M" />
+
+    <RadioButton
+        android:id="@+id/radioButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/radioButton2"
+        android:layout_alignBottom="@+id/radioButton2"
+        android:layout_alignLeft="@+id/telaImc"
+        android:text="1" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_alignLeft="@+id/alturaTextView"
+        android:text="Nivel de esportes"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_toRightOf="@+id/radioButton1"
+        android:text="2" />
+
+    <RadioButton
+        android:id="@+id/radioButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/nasc"
+        android:layout_toRightOf="@+id/radioButton2"
+        android:text="3" />
 
 </RelativeLayout>

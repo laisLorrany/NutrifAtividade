@@ -9,12 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import br.edu.ifpb.nutrif.R;
-
-import br.edu.ifpb.nutrif.asynctask.*;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
+import br.edu.ifpb.nutrif.R;
 import br.edu.ifpb.nutrif.asynctask.CalButtonAsyncTask;
 import br.edu.ifpb.nutrif.entidades.Entrevistado;
 
@@ -37,8 +34,6 @@ public class CalculaVCTActivity extends Activity {
 	            String peso = pesoEditText.getText().toString();
 	            EditText alturaEditText = (EditText) findViewById(R.id.alturaEditText);
 	            String altura = alturaEditText.getText().toString();
-	            //EditText esporteEditText = (EditText) findViewById(R.id.niveis);
-	            //String esporte = esporteEditText.getText().toString();
 	            EditText nascimentoEditText = (EditText) findViewById(R.id.nasc);
 	            String nascimento = nascimentoEditText.getText().toString();
 	            
@@ -102,7 +97,7 @@ public class CalculaVCTActivity extends Activity {
 	     	            
 	            CalButtonAsyncTask calButtonAsynctask = new CalButtonAsyncTask(v.getContext());
 
-	            calButtonAsynctask.execute(valores);
+	           // calButtonAsynctask.execute(valores);
 
 	            calButtonAsynctask.execute(jsonVct);
 	            
