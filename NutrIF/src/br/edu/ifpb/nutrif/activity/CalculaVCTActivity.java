@@ -1,8 +1,5 @@
 package br.edu.ifpb.nutrif.activity;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import br.edu.ifpb.nutrif.R;
-import br.edu.ifpb.nutrif.asynctask.ImcButtonAsyncTask;
+import br.edu.ifpb.nutrif.asynctask.*;
 
 public class CalculaVCTActivity extends Activity {
 
@@ -39,7 +36,7 @@ public class CalculaVCTActivity extends Activity {
 
 	            String [] valores = {peso, altura, esporte, sexo, nascimento};
 	     	            
-	            CalButtonAsynctask calButtonAsynctask = new CalButtonAsynctask(v.getContext());
+	            CalButtonAsyncTask calButtonAsynctask = new CalButtonAsyncTask(v.getContext());
 	            
 	            calButtonAsynctask.execute(valores);
 	            

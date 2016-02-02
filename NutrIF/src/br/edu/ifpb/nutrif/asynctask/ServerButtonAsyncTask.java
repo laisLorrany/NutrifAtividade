@@ -1,6 +1,5 @@
 package br.edu.ifpb.nutrif.asynctask;
 
-import br.edu.ifpb.nutrif.util.*;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -12,6 +11,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
+import br.edu.ifpb.nutrif.util.HttpService;
+import br.edu.ifpb.nutrif.util.Response;
 
 public class ServerButtonAsyncTask extends AsyncTask<String, Void, Response>{
 
