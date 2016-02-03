@@ -34,7 +34,7 @@ public class CalculaVCTActivity extends Activity {
 	            String peso = pesoEditText.getText().toString();
 	            EditText alturaEditText = (EditText) findViewById(R.id.alturaEditText);
 	            String altura = alturaEditText.getText().toString();
-	            EditText nascimentoEditText = (EditText) findViewById(R.id.nasc);
+	            EditText nascimentoEditText = (EditText) findViewById(R.id.nascimento);
 	            String nascimento = nascimentoEditText.getText().toString();
 	            
 	            //recuperando variaveis do radio button de niveis de esporte
