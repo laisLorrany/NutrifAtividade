@@ -71,9 +71,6 @@ public class CalculaVCTActivity extends Activity {
 	            	RadioButton sexoRadio = (RadioButton) findViewById(R.id.radioButton5);
 	            	sexo = sexoRadio.getText().toString();
 	            }
-	            
-
-	           String [] valores = {peso, altura, esporte, sexo, nascimento};
 
 	            Entrevistado entrevistado = new Entrevistado(nascimento, sexo);
 	            
@@ -96,9 +93,6 @@ public class CalculaVCTActivity extends Activity {
 				}
 	     	            
 	            CalButtonAsyncTask calButtonAsynctask = new CalButtonAsyncTask(v.getContext());
-
-	           // calButtonAsynctask.execute(valores);
-
 	            calButtonAsynctask.execute(jsonVct);
 	            
 	        }
