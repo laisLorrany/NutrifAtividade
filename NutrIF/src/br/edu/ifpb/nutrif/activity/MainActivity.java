@@ -54,7 +54,18 @@ public class MainActivity extends Activity {
 	        startActivity(intent);
 		}
 	});
-	}
+	
 
+	Button perfilButton = (Button) findViewById(R.id.perfilButton);
+	perfilButton.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+
+			Intent intent = new Intent(MainActivity.this,PerfilActivity.class);
+	        startActivity(intent);
+		}
+	});
+	}
 	
 }

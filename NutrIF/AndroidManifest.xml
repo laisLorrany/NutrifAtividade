@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".SplashActivity"
+            android:name="br.edu.ifpb.nutrif.activity.SplashActivity"
             android:label="@string/title_activity_splash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,7 +38,7 @@
             android:label="@string/title_calculavctactivity" >
         </activity>
         <activity
-            android:name=".PerfilButtonAsyncTask"
+            android:name="br.edu.ifpb.nutrif.asynctask.PerfilButtonAsyncTask"
             android:label="@string/title_activity_perfil_button_async_task" >
         </activity>
     </application>

@@ -7,28 +7,37 @@ import java.net.MalformedURLException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.os.AsyncTask;
-import android.util.Log;
+import com.google.gson.Gson;
+
+import br.edu.ifpb.nutrif.R;
+import br.edu.ifpb.nutrif.R.id;
+import br.edu.ifpb.nutrif.R.layout;
+import br.edu.ifpb.nutrif.R.menu;
 import br.edu.ifpb.nutrif.dialog.DialogBox;
 import br.edu.ifpb.nutrif.entidades.Anamnese;
 import br.edu.ifpb.nutrif.util.HttpService;
 import br.edu.ifpb.nutrif.util.Response;
+import android.app.Activity;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
-import com.google.gson.Gson;
+public class PerfilButtonAsyncTask extends AsyncTask<JSONObject, Void, Response> {
 
-public class CalButtonAsyncTask extends AsyncTask<JSONObject, Void, Response>{
-
-	Context context;
 	
-	public CalButtonAsyncTask(Context context) {
+Context context;
+	
+	public PerfilButtonAsyncTask(Context context2) {
 		// TODO Auto-generated constructor stub
 		this.context = context;
 	}
 
 	@Override
 	protected void onPreExecute(){
-		Log.i("LoginAsyncTask: ", "onPreExecute");
+		Log.i("PerfilButtonAsyncTask: ", "onPreExecute");
 		
 	}
 
@@ -41,7 +50,7 @@ public class CalButtonAsyncTask extends AsyncTask<JSONObject, Void, Response>{
 		String contentValue = null;
 		
     	try {
-			response = HttpService.sendJSONPostResquest("calcularVCT", params[0]);
+			response = HttpService.sendJSONPostResquest("calcularPerfilAntropometrico", params[0]);
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -65,14 +74,11 @@ public class CalButtonAsyncTask extends AsyncTask<JSONObject, Void, Response>{
 				
 		try {
             JSONObject jsonResponse = new JSONObject(response.getContentValue());
-            String jsonAnamnese = jsonResponse.getString("anamnese");
             
-            double vct = jsonResponse.getDouble("valor");
-            Anamnese anamnese = gson.fromJson(jsonAnamnese, Anamnese.class);
+            String diagnostico = jsonResponse.getString("diagnostico");
             
-            String titulo = "Valor Calórico Total (VCT)";
-            String mensagem = "O VCT é: " + vct +". Anamnese: " + anamnese.toString();
-            DialogBox dialog = new DialogBox(titulo, mensagem, context);
+            String titulo = "Perfil Antropométrico";
+            DialogBox dialog = new DialogBox(titulo, diagnostico, context);
             dialog.dialogExecute();
             
         } catch (JSONException e) {

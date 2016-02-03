@@ -19,32 +19,6 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/serverStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/linearLayout1"
-        android:layout_centerHorizontal="true"
-        android:text="@string/statusButton" />
-
-    <Button
-        android:id="@+id/imcButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/serverStatus"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:text="@string/imcButton" />
-
-    <Button
-        android:id="@+id/vctButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imcButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="31dp"
-        android:text="Calcular Valor Calórico" />
-
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
@@ -53,5 +27,38 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="55dp"
         android:src="@drawable/nutrif" />
+
+    <Button
+        android:id="@+id/perfilButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Perfil Antropométrico" />
+
+    <Button
+        android:id="@+id/vctButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imcButton"
+        android:layout_centerHorizontal="true"
+        android:text="Calcular Valor Calórico" />
+
+    <Button
+        android:id="@+id/imcButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/serverStatus"
+        android:layout_centerHorizontal="true"
+        android:text="@string/imcButton" />
+
+    <Button
+        android:id="@+id/serverStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:text="@string/statusButton" />
 
 </RelativeLayout>

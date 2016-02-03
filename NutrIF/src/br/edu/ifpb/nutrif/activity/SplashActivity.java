@@ -1,6 +1,7 @@
-package br.edu.ifpb.nutrif;
+package br.edu.ifpb.nutrif.activity;
 
-import br.edu.ifpb.nutrif.activity.MainActivity;
+import br.edu.ifpb.nutrif.R;
+import br.edu.ifpb.nutrif.R.layout;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
