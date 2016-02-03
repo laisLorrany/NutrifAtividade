@@ -37,6 +37,10 @@
             android:name=".activity.CalculaVCTActivity"
             android:label="@string/title_calculavctactivity" >
         </activity>
+        <activity
+            android:name=".PerfilButtonAsyncTask"
+            android:label="@string/title_activity_perfil_button_async_task" >
+        </activity>
     </application>
 
 </manifest>

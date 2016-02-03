@@ -34,6 +34,7 @@ public class CalculaVCTActivity extends Activity {
 	            String peso = pesoEditText.getText().toString();
 	            EditText alturaEditText = (EditText) findViewById(R.id.alturaEditText);
 	            String altura = alturaEditText.getText().toString();
+	            
 	            EditText nascimentoEditText = (EditText) findViewById(R.id.nascimento);
 	            String nascimento = nascimentoEditText.getText().toString();
 	            
