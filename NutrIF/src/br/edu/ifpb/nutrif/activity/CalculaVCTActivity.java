@@ -58,6 +58,8 @@ public class CalculaVCTActivity extends Activity {
 	            		RadioButton NivelEsporte = (RadioButton) findViewById(R.id.radioButton1);
 	            		esporte = NivelEsporte.getText().toString();}
 	            
+	            System.out.print(op);
+	            
 	            //recuperando variaveis do radio button de niveis de sexo
 	            
 	            String sexo="";
@@ -71,6 +73,8 @@ public class CalculaVCTActivity extends Activity {
 	            	RadioButton sexoRadio = (RadioButton) findViewById(R.id.radioButton5);
 	            	sexo = sexoRadio.getText().toString();
 	            }
+	            
+	            System.out.print(op);
 
 	            Entrevistado entrevistado = new Entrevistado(nascimento, sexo);
 	            

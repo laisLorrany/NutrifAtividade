@@ -3,8 +3,8 @@
     package="br.edu.ifpb.nutrif"
     android:versionCode="1"
     android:versionName="1.0" >
-    
-    <uses-permission android:name="android.permission.INTERNET"/> 
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-sdk
         android:minSdkVersion="15"
@@ -12,12 +12,13 @@
 
     <application
         android:allowBackup="true"
+        android:enabled="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" android:enabled="false">
+        android:theme="@style/AppTheme" >
         <activity
-            android:name=".activity.MainActivity"
-            android:label="@string/app_name" >
+            android:name=".SplashActivity"
+            android:label="@string/title_activity_splash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,12 +26,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.edu.ifpb.nutrif.activity.ImcActivity"
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".activity.ImcActivity"
             android:label="@string/title_activity_imc" >
         </activity>
-        
         <activity
-            android:name="br.edu.ifpb.nutrif.activity.CalculaVCTActivity"
+            android:name=".activity.CalculaVCTActivity"
             android:label="@string/title_calculavctactivity" >
         </activity>
     </application>

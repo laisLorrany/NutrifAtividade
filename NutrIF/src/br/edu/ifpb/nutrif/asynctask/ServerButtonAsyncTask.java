@@ -14,19 +14,19 @@ import android.widget.Toast;
 import br.edu.ifpb.nutrif.util.HttpService;
 import br.edu.ifpb.nutrif.util.Response;
 
-public class ServerButtonAsyncTask extends AsyncTask<String, Void, Response>{
+public class ServerButtonAsyncTask extends AsyncTask<String, Void, Response> {
 
 	Context context;
-	
+
 	public ServerButtonAsyncTask(Context context) {
 		// TODO Auto-generated constructor stub
 		this.context = context;
 	}
 
 	@Override
-	protected void onPreExecute(){
+	protected void onPreExecute() {
 		Log.i("LoginAsyncTask: ", "onPreExecute");
-		
+
 	}
 
 	@Override
@@ -36,11 +36,11 @@ public class ServerButtonAsyncTask extends AsyncTask<String, Void, Response>{
 		Response response;
 		int statusCodeHttp = 0;
 		String contentValue = null;
-		
+
 		try {
 			connection = HttpService.sendGetRequest("statusServer");
-	        contentValue = HttpService.getHttpContent(connection);
-	        statusCodeHttp = connection.getResponseCode();
+			contentValue = HttpService.getHttpContent(connection);
+			statusCodeHttp = connection.getResponseCode();
 		} catch (MalformedURLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -49,25 +49,27 @@ public class ServerButtonAsyncTask extends AsyncTask<String, Void, Response>{
 			e1.printStackTrace();
 		}
 
-        response = new Response(statusCodeHttp, contentValue);
-        
+		response = new Response(statusCodeHttp, contentValue);
+
 		Log.i("LoginAsyncTask: ", "doInBackGround");
-		
+
 		return response;
 	}
-	
+
 	@Override
-	protected void onPostExecute(Response response){
+	protected void onPostExecute(Response response) {
 		Log.i("LoginAsyncTask: ", "onPostExecute");
-				
+
 		try {
-            JSONObject json = new JSONObject(response.getContentValue());
-            String nome = json.getString("online");
-            Toast.makeText(context, nome, Toast.LENGTH_LONG).show();           
-            
-        } catch (JSONException e) {
-            Log.e("LoginAsyncTask", "JSONException: " + e.getMessage());
-        }
+			JSONObject json = new JSONObject(response.getContentValue());
+			String nome = json.getString("online");
+
+			Toast.makeText(context, nome, Toast.LENGTH_LONG)
+					.show();
+
+		} catch (JSONException e) {
+			Log.e("LoginAsyncTask", "JSONException: " + e.getMessage());
+		}
 	}
 
 }
